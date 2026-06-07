@@ -1,0 +1,35 @@
+{
+  "exported_at": "2025-06-07T00:00:00Z",
+  "project": "Token2025 NFT",
+  "data": {
+    "contract": {
+      "address": "YOUR_SOLANA_PUBLICKEY_HERE",
+      "network": "mainnet-beta",
+      "standard": "Metaplex NFT",
+      "program": "Token Metadata v3",
+      "status": "active"
+    },
+    "tokenomics": [
+      { "category": "Public Mint",        "percentage": 60, "supply": 6000 },
+      { "category": "Team & Dev",         "percentage": 15, "supply": 1500 },
+      { "category": "Community Rewards",  "percentage": 15, "supply": 1500 },
+      { "category": "Reserve / Treasury", "percentage": 10, "supply": 1000 }
+    ],
+    "revenue_model": {
+      "total_supply": 10000,
+      "mint_price_sol": 1.5,
+      "max_revenue_sol": 15000.0,
+      "royalty_percent": 7.5,
+      "marketplace": ["Magic Eden", "Tensor"],
+      "community_fund_pct": 10,
+      "dev_allocation_pct": 15
+    },
+    "roadmap": [
+      { "quarter": "Q1 2025", "milestone": "Contract deploy",   "status": "done",   "description": "Smart contract deployed on Solana Mainnet" },
+      { "quarter": "Q2 2025", "milestone": "Whitelist mint",    "status": "done",   "description": "Whitelist holders minted at 1.0 SOL" },
+      { "quarter": "Q3 2025", "milestone": "Public mint",       "status": "active", "description": "Open mint at 1.5 SOL, marketplace listings live" },
+      { "quarter": "Q4 2025", "milestone": "Staking & utility", "status": "next",   "description": "Holder staking rewards + token airdrop" },
+      { "quarter": "Q1 2026", "milestone": "V2 collection",     "status": "next",   "description": "Second collection drop with revenue share to V1 holders" }
+    ]
+  }
+}
