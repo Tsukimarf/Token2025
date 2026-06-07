@@ -1,4 +1,4 @@
-Copyright (c)
+Copyright (c) 2026 Bit Laner Deth contributors
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
