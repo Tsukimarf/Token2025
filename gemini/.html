@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pythagoras Web3 Portal</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #f8fafc; padding: 2rem; }
+    .card { background: #1e293b; padding: 1.5rem; border-radius: 8px; max-width: 500px; margin-bottom: 1rem; }
+    button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+    input { background: #0f172a; border: 1px solid #475569; color: white; padding: 0.5rem; width: 80%; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Web3 Wallet Connection</h2>
+    <button id="connectBtn" onclick="connectWallet()">Connect Wallet</button>
+    <p id="walletAddress">Status: Disconnected</p>
+  </div>
+
+  <div class="card">
+    <h2>Pythagoras Calculator</h2>
+    <input type="number" id="sideA" placeholder="Side A">
+    <input type="number" id="sideB" placeholder="Side B">
+    <button onclick="calculateHypotenuse()">Calculate Hypotenuse (C)</button>
+    <p id="result">Result: -</p>
+  </div>
+
+  <script>
+    let provider, signer;
+    async function connectWallet() {
+      if (window.ethereum) {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        signer = provider.getSigner();
+        const address = await signer.getAddress();
+        document.getElementById("walletAddress").innerText = `Connected: ${address}`;
+      } else {
+        alert("Please install MetaMask!");
+      }
+    }
+
+    function calculateHypotenuse() {
+      const a = parseFloat(document.getElementById("sideA").value);
+      const b = parseFloat(document.getElementById("sideB").value);
+      if (a > 0 && b > 0) {
+        const c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        document.getElementById("result").innerText = `Hypotenuse (C): ${c.toFixed(4)}`;
+      }
+    }
+  </script>
+</body>
+</html>
