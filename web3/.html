@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bit Laner Deth ($BLD) — Solana Meme Coin</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --skull: #FF3B2F;
+  --bone: #F5F0E8;
+  --dark: #0A0A0A;
+  --carbon: #111111;
+  --ash: #1A1A1A;
+  --ember: #FF6B35;
+  --gold: #FFD23F;
+  --ghost: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+  --body: 'DM Sans', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--bone);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* ── NOISE OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.85);backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--display);font-size:1.8rem;letter-spacing:2px;color:var(--skull)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:rgba(245,240,232,0.5);text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--bone)}
+.nav-cta{background:var(--skull);color:#fff;border:none;padding:.5rem 1.25rem;font-family:var(--mono);font-size:12px;cursor:pointer;letter-spacing:.05em;transition:background .2s}
+.nav-cta:hover{background:var(--ember)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-skull{font-size:6rem;line-height:1;margin-bottom:1rem;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--skull);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;border:1px solid rgba(255,59,47,.3);padding:.3rem 1rem;display:inline-block}
+.hero h1{font-family:var(--display);font-size:clamp(4rem,12vw,10rem);line-height:.9;letter-spacing:4px;color:var(--bone);margin-bottom:.5rem}
+.hero h1 em{color:var(--skull);font-style:normal}
+.hero-sub{font-family:var(--mono);font-size:14px;color:rgba(245,240,232,0.4);letter-spacing:.1em;margin-bottom:2rem}
+.hero-quote{font-size:1.1rem;color:var(--gold);font-style:italic;margin-bottom:2.5rem;opacity:.9}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--skull);color:#fff;border:none;padding:.8rem 2rem;font-family:var(--display);font-size:1.3rem;letter-spacing:2px;cursor:pointer;transition:all .2s}
+.btn-primary:hover{background:var(--ember);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--bone);border:1px solid rgba(245,240,232,.3);padding:.8rem 2rem;font-family:var(--display);font-size:1.3rem;letter-spacing:2px;cursor:pointer;transition:all .2s}
+.btn-secondary:hover{border-color:var(--bone);transform:translateY(-2px)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,59,47,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,59,47,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-scroll{position:absolute;bottom:2rem;font-family:var(--mono);font-size:11px;color:rgba(245,240,232,.3);letter-spacing:.1em;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ── TICKER ── */
+.ticker{background:var(--skull);padding:.5rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:3rem;animation:scroll 20s linear infinite}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-family:var(--mono);font-size:12px;color:#fff;letter-spacing:.1em}
+
+/* ── SECTION ── */
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:11px;color:var(--skull);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-family:var(--display);font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:3px;color:var(--bone);margin-bottom:.5rem;line-height:1}
+.section-desc{color:rgba(245,240,232,.5);max-width:560px;margin-bottom:3rem;line-height:1.7}
+
+/* ── STATS ROW ── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;border:1px solid var(--border);background:var(--border);margin-bottom:4rem}
+.stat-box{background:var(--carbon);padding:1.5rem;position:relative;overflow:hidden}
+.stat-box::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--skull)}
+.stat-label{font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.35);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.stat-val{font-family:var(--display);font-size:2rem;letter-spacing:1px;color:var(--bone)}
+.stat-sub{font-size:11px;color:rgba(245,240,232,.3);margin-top:.2rem;font-family:var(--mono)}
+
+/* ── CONTRACT BOX ── */
+.contract-card{background:var(--ash);border:1px solid rgba(255,59,47,.25);padding:2rem;position:relative;overflow:hidden;margin-bottom:2rem}
+.contract-card::after{content:'CONTRACT';position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:var(--display);font-size:5rem;color:rgba(255,59,47,.04);pointer-events:none;letter-spacing:5px}
+.contract-network{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,59,47,.1);border:1px solid rgba(255,59,47,.2);padding:.25rem .75rem;font-family:var(--mono);font-size:11px;color:var(--skull);margin-bottom:1rem;letter-spacing:.1em}
+.contract-addr{font-family:var(--mono);font-size:14px;color:var(--bone);word-break:break-all;margin-bottom:1rem;background:rgba(0,0,0,.3);padding:1rem;border:1px solid var(--border)}
+.contract-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.cf{background:rgba(0,0,0,.2);padding:.75rem 1rem;border-left:2px solid var(--skull)}
+.cf-key{font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.3);letter-spacing:.1em;margin-bottom:.25rem;text-transform:uppercase}
+.cf-val{font-size:13px;color:var(--bone);font-weight:500}
+.copy-btn{background:var(--skull);color:#fff;border:none;padding:.5rem 1.25rem;font-family:var(--mono);font-size:11px;cursor:pointer;letter-spacing:.05em;transition:background .15s}
+.copy-btn:hover{background:var(--ember)}
+.badge-live{display:inline-flex;align-items:center;gap:.4rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-family:var(--mono);font-size:11px;padding:.2rem .6rem;letter-spacing:.08em}
+.badge-pending{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,210,63,.08);border:1px solid rgba(255,210,63,.2);color:var(--gold);font-family:var(--mono);font-size:11px;padding:.2rem .6rem;letter-spacing:.08em}
+
+/* ── TOKENOMICS ── */
+.tknomics-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:640px){.tknomics-grid{grid-template-columns:1fr}}
+.donut-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.donut-center{position:absolute;text-align:center}
+.donut-center-val{font-family:var(--display);font-size:2rem;color:var(--bone)}
+.donut-center-label{font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.3);letter-spacing:.1em}
+.tknomics-items{display:flex;flex-direction:column;gap:.75rem}
+.tk-item{display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--ash);border:1px solid var(--border)}
+.tk-dot{width:10px;height:10px;flex-shrink:0}
+.tk-label{flex:1;font-size:13px;color:rgba(245,240,232,.7)}
+.tk-pct{font-family:var(--mono);font-size:13px;color:var(--bone);font-weight:500}
+.tk-amount{font-family:var(--mono);font-size:11px;color:rgba(245,240,232,.3)}
+.fee-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.fee-row:last-child{border-bottom:none}
+
+/* ── NFT ── */
+.nft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:2rem}
+.nft-card{background:var(--ash);border:1px solid var(--border);padding:1.5rem;text-align:center;transition:border-color .2s,transform .2s;cursor:pointer}
+.nft-card:hover{border-color:var(--skull);transform:translateY(-4px)}
+.nft-skull{font-size:2.5rem;margin-bottom:.75rem}
+.nft-tier{font-family:var(--display);font-size:1.5rem;letter-spacing:2px;margin-bottom:.5rem}
+.nft-supply{font-family:var(--mono);font-size:11px;color:rgba(245,240,232,.4);margin-bottom:.25rem}
+.nft-prob{font-family:var(--mono);font-size:13px;color:var(--skull)}
+
+/* ── ROADMAP ── */
+.roadmap-list{display:flex;flex-direction:column;gap:0}
+.rm-item{display:flex;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--border);position:relative}
+.rm-item:last-child{border-bottom:none}
+.rm-phase{font-family:var(--display);font-size:3rem;color:rgba(255,59,47,.15);width:60px;flex-shrink:0;line-height:1;padding-top:.2rem}
+.rm-content{flex:1}
+.rm-status{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.rm-title{font-family:var(--display);font-size:1.6rem;letter-spacing:2px;color:var(--bone);margin-bottom:.4rem}
+.rm-tasks{font-size:13px;color:rgba(245,240,232,.45);line-height:1.8}
+.status-done{color:#4ade80}
+.status-active{color:var(--gold)}
+.status-pending{color:rgba(245,240,232,.3)}
+
+/* ── API REFERENCE ── */
+.api-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1.5rem}
+.api-table th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.3);padding:.6rem .75rem;border-bottom:1px solid var(--border)}
+.api-table td{padding:.6rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+.api-table tr:last-child td{border-bottom:none}
+.method{font-family:var(--mono);font-size:11px;padding:.2rem .5rem;border-radius:2px}
+.GET{background:rgba(59,130,246,.15);color:#93c5fd}
+.POST{background:rgba(34,197,94,.12);color:#86efac}
+.endpoint{font-family:var(--mono);font-size:12px;color:rgba(245,240,232,.6)}
+
+/* ── SECURITY ── */
+.audit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
+.audit-box{background:var(--carbon);padding:1.25rem;text-align:center}
+.audit-num{font-family:var(--display);font-size:2.5rem;letter-spacing:1px;margin-bottom:.25rem}
+.audit-label{font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.3);letter-spacing:.1em;text-transform:uppercase}
+.check-list{display:flex;flex-direction:column;gap:.5rem}
+.check-item{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:var(--ash);border:1px solid var(--border);font-size:13px}
+.check-icon{font-size:14px;flex-shrink:0}
+.check-label{flex:1;color:rgba(245,240,232,.7)}
+.check-pass{color:#4ade80}
+.check-warn{color:var(--gold)}
+
+/* ── DATABASE / CODE SECTION ── */
+.code-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
+.code-tab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.25rem;cursor:pointer;color:rgba(245,240,232,.3);border:1px solid transparent;border-bottom:none;transition:all .15s;background:transparent}
+.code-tab.active{color:var(--bone);background:var(--ash);border-color:var(--border)}
+.code-panel{display:none;background:var(--ash);border:1px solid var(--border);border-top:none;padding:1.5rem;overflow-x:auto}
+.code-panel.active{display:block}
+
+/* ── PYTHAGORAS TOOL ── */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.tool-card{background:var(--ash);border:1px solid rgba(255,59,47,.25);padding:1.75rem}
+.tool-card h3{font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin-bottom:1rem;color:var(--bone)}
+.tool-input{width:100%;background:var(--dark);border:1px solid var(--border);color:var(--bone);padding:.6rem;font-family:var(--mono);font-size:13px;margin-bottom:.6rem}
+.tool-note{font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.35);margin-top:.5rem;letter-spacing:.05em}
+.ptable{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;margin-bottom:2.5rem}
+.ptable th{text-align:left;color:var(--skull);letter-spacing:.1em;text-transform:uppercase;font-size:10px;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+.ptable td{padding:.55rem .8rem;border-bottom:1px solid var(--border);color:rgba(245,240,232,.75)}
+.ptable tr:hover td{background:var(--ghost);cursor:pointer}
+.ptag{font-family:var(--mono);font-size:10px;padding:.15rem .5rem;border-radius:2px;letter-spacing:.05em}
+.ptag-prim{background:rgba(56,189,248,.15);color:#38bdf8}
+.ptag-scaled{background:rgba(255,210,63,.15);color:var(--gold)}
+pre{font-family:var(--mono);font-size:12px;line-height:1.7;color:#a8d8a8;white-space:pre-wrap;word-break:break-all}
+.kw{color:#f7768e}
+.str{color:#9ece6a}
+.cm{color:rgba(245,240,232,.25)}
+.num{color:#ff9e64}
+.key{color:#7dcfff}
+
+/* ── FOOTER ── */
+footer{background:var(--carbon);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;margin-top:4rem}
+.footer-logo{font-family:var(--display);font-size:2.5rem;letter-spacing:4px;color:var(--skull);margin-bottom:.5rem}
+.footer-sub{font-family:var(--mono);font-size:11px;color:rgba(245,240,232,.25);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.footer-links a{font-family:var(--mono);font-size:11px;color:rgba(245,240,232,.3);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:var(--bone)}
+.footer-disclaimer{font-size:11px;color:rgba(245,240,232,.2);max-width:600px;margin:0 auto;line-height:1.6}
+.divider{border:none;border-top:1px solid var(--border);max-width:1100px;margin:0 auto}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}
+.delay-2{animation-delay:.2s}
+.delay-3{animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BLD<span>💀</span></div>
+  <div class="nav-links">
+    <a href="#token">Token</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#nft">NFT</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#database">Database</a>
+    <a href="#api">API</a>
+    <a href="#tools">Tools</a>
+    <a href="#security">Security</a>
+  </div>
+  <button class="nav-cta">Buy $BLD</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-skull fade-up">💀</div>
+  <div class="hero-tag fade-up delay-1">Solana SPL · Mainnet · v2.0</div>
+  <h1 class="fade-up delay-2">BIT<br><em>LANER</em><br>DETH</h1>
+  <p class="hero-sub fade-up delay-2">$BLD · 1,000,000,000,000 SUPPLY</p>
+  <p class="hero-quote fade-up delay-3">"Kalau rugi, senyumin aja" 💀😊</p>
+  <div class="hero-btns fade-up delay-3">
+    <button class="btn-primary">BUY ON RAYDIUM</button>
+    <button class="btn-secondary">VIEW CONTRACT</button>
+  </div>
+  <div class="hero-scroll">↓ SCROLL</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">$BLD · SOLANA · 1T SUPPLY</span>
+    <span class="ticker-item">💀 BURN-TO-EARN</span>
+    <span class="ticker-item">10,000 SKULL NFTs</span>
+    <span class="ticker-item">OTTERSEC AUDIT 94/100</span>
+    <span class="ticker-item">50,000 BLD / NFT / MONTH</span>
+    <span class="ticker-item">MINT AUTH DISABLED</span>
+    <span class="ticker-item">$BLD · SOLANA · 1T SUPPLY</span>
+    <span class="ticker-item">💀 BURN-TO-EARN</span>
+    <span class="ticker-item">10,000 SKULL NFTs</span>
+    <span class="ticker-item">OTTERSEC AUDIT 94/100</span>
+    <span class="ticker-item">50,000 BLD / NFT / MONTH</span>
+    <span class="ticker-item">MINT AUTH DISABLED</span>
+  </div>
+</div>
+
+<!-- TOKEN SPECS -->
+<section id="token">
+  <div class="section-label">Token Specs</div>
+  <div class="section-title">$BLD ON CHAIN</div>
+  <p class="section-desc">Bit Laner Deth — a Solana SPL Token-2022 compatible meme coin with mint authority permanently disabled and freeze authority revoked.</p>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-label">Total Supply</div>
+      <div class="stat-val">1T</div>
+      <div class="stat-sub">BLD tokens</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Circulating</div>
+      <div class="stat-val">600B</div>
+      <div class="stat-sub">post genesis burn</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Burned at launch</div>
+      <div class="stat-val">400B</div>
+      <div class="stat-sub">permanent — 40%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Decimals</div>
+      <div class="stat-val">9</div>
+      <div class="stat-sub">Solana SPL standard</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Tx Fee</div>
+      <div class="stat-val">10%</div>
+      <div class="stat-sub">split 3 ways</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Audit Score</div>
+      <div class="stat-val">94/100</div>
+      <div class="stat-sub">OtterSec v2.0</div>
+    </div>
+  </div>
+
+  <!-- CONTRACT CARD -->
+  <div class="contract-card">
+    <div class="contract-network">● SOLANA MAINNET-BETA</div>
+    <div class="section-label" style="margin-bottom:.5rem">SPL Token Contract</div>
+    <div class="contract-addr" id="contract-addr">YOUR_SOLANA_PUBLICKEY_HERE</div>
+    <div style="display:flex;gap:.75rem;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap">
+      <button class="copy-btn" onclick="copyAddr(event)">⧉ COPY ADDRESS</button>
+      <span class="badge-pending">⏳ PENDING MAINNET DEPLOY</span>
+    </div>
+    <div class="contract-fields">
+      <div class="cf"><div class="cf-key">Network</div><div class="cf-val">Solana Mainnet-Beta</div></div>
+      <div class="cf"><div class="cf-key">Standard</div><div class="cf-val">Metaplex NFT / Token-2022</div></div>
+      <div class="cf"><div class="cf-key">Mint Authority</div><div class="cf-val">Disabled post-genesis</div></div>
+      <div class="cf"><div class="cf-key">Freeze Authority</div><div class="cf-val">Revoked</div></div>
+      <div class="cf"><div class="cf-key">Symbol</div><div class="cf-val">$BLD</div></div>
+      <div class="cf"><div class="cf-key">Program</div><div class="cf-val">Token Metadata v3</div></div>
+      <div class="cf"><div class="cf-key">Version</div><div class="cf-val">2.0</div></div>
+      <div class="cf"><div class="cf-key">Explorer</div><div class="cf-val"><a href="https://solscan.io" target="_blank" style="color:var(--skull);text-decoration:none">solscan.io ↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- NFT CONTRACT -->
+  <div class="contract-card">
+    <div class="contract-network">● NFT CANDY MACHINE v3</div>
+    <div class="section-label" style="margin-bottom:.5rem">NFT Collection Contract</div>
+    <div class="contract-addr">YOUR_CANDY_MACHINE_ADDRESS_HERE</div>
+    <div class="contract-fields">
+      <div class="cf"><div class="cf-key">Standard</div><div class="cf-val">Metaplex NFT v1.1</div></div>
+      <div class="cf"><div class="cf-key">Candy Machine</div><div class="cf-val">v3</div></div>
+      <div class="cf"><div class="cf-key">Royalty</div><div class="cf-val">5% secondary sales</div></div>
+      <div class="cf"><div class="cf-key">Storage</div><div class="cf-val">Arweave / IPFS</div></div>
+      <div class="cf"><div class="cf-key">Mint Price</div><div class="cf-val">0.1 SOL (public)</div></div>
+      <div class="cf"><div class="cf-key">Total Supply</div><div class="cf-val">10,000 NFTs</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <div class="section-label">Distribution</div>
+  <div class="section-title">TOKENOMICS</div>
+  <p class="section-desc">1 trillion total supply. 40% burned at genesis. Locked liquidity. Community-first allocation with 12-month team vesting.</p>
+
+  <div class="tknomics-grid">
+    <div>
+      <div class="donut-wrap" style="height:240px">
+        <svg width="220" height="220" viewBox="0 0 220 220">
+          <!-- Burned 40% -->
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#FF3B2F" stroke-width="28"
+            stroke-dasharray="200.96 301.44" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+          <!-- Locked LP 30% -->
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#FFD23F" stroke-width="28"
+            stroke-dasharray="150.72 351.68" stroke-dashoffset="-200.96" transform="rotate(-90 110 110)"/>
+          <!-- Community 20% -->
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#FF6B35" stroke-width="28"
+            stroke-dasharray="100.48 402.40" stroke-dashoffset="-351.68" transform="rotate(-90 110 110)"/>
+          <!-- Dev 10% -->
+          <circle cx="110" cy="110" r="80" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="28"
+            stroke-dasharray="50.24 452.64" stroke-dashoffset="-452.16" transform="rotate(-90 110 110)"/>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-center-val">1T</div>
+          <div class="donut-center-label">BLD</div>
+        </div>
+      </div>
+    </div>
+    <div class="tknomics-items">
+      <div class="tk-item">
+        <div class="tk-dot" style="background:#FF3B2F"></div>
+        <div class="tk-label">Burned at launch</div>
+        <div>
+          <div class="tk-pct">40%</div>
+          <div class="tk-amount">400,000,000,000</div>
+        </div>
+      </div>
+      <div class="tk-item">
+        <div class="tk-dot" style="background:#FFD23F"></div>
+        <div class="tk-label">Locked liquidity</div>
+        <div>
+          <div class="tk-pct">30%</div>
+          <div class="tk-amount">300,000,000,000</div>
+        </div>
+      </div>
+      <div class="tk-item">
+        <div class="tk-dot" style="background:#FF6B35"></div>
+        <div class="tk-label">Community &amp; airdrop</div>
+        <div>
+          <div class="tk-pct">20%</div>
+          <div class="tk-amount">200,000,000,000</div>
+        </div>
+      </div>
+      <div class="tk-item">
+        <div class="tk-dot" style="background:rgba(245,240,232,0.2)"></div>
+        <div class="tk-label">Dev &amp; team (12m vest)</div>
+        <div>
+          <div class="tk-pct">10%</div>
+          <div class="tk-amount">100,000,000,000</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem">
+        <div class="section-label">Transaction Fees (10% total)</div>
+        <div class="fee-row"><span style="font-size:13px;color:rgba(245,240,232,.6)">Holder redistribution</span><span style="font-family:var(--mono);font-size:13px;color:var(--skull)">5%</span></div>
+        <div class="fee-row"><span style="font-size:13px;color:rgba(245,240,232,.6)">Liquidity pool (Raydium)</span><span style="font-family:var(--mono);font-size:13px;color:var(--gold)">3%</span></div>
+        <div class="fee-row"><span style="font-size:13px;color:rgba(245,240,232,.6)">Marketing &amp; meme warfare</span><span style="font-family:var(--mono);font-size:13px;color:var(--ember)">2%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- NFT COLLECTION -->
+<section id="nft">
+  <div class="section-label">Skull Series</div>
+  <div class="section-title">NFT COLLECTION</div>
+  <p class="section-desc">10,000 skull NFTs on Metaplex Candy Machine v3. Stake to earn BLD or burn for instant 5M BLD claim.</p>
+
+  <div class="nft-grid">
+    <div class="nft-card">
+      <div class="nft-skull">💀</div>
+      <div class="nft-tier" style="color:rgba(245,240,232,.4)">Common</div>
+      <div class="nft-supply">5,500 NFTs</div>
+      <div class="nft-prob">55%</div>
+    </div>
+    <div class="nft-card">
+      <div class="nft-skull">💀</div>
+      <div class="nft-tier" style="color:#93c5fd">Rare</div>
+      <div class="nft-supply">2,800 NFTs</div>
+      <div class="nft-prob">28%</div>
+    </div>
+    <div class="nft-card" style="border-color:rgba(255,59,47,.3)">
+      <div class="nft-skull">💀</div>
+      <div class="nft-tier" style="color:var(--ember)">Epic</div>
+      <div class="nft-supply">1,200 NFTs</div>
+      <div class="nft-prob">12%</div>
+    </div>
+    <div class="nft-card" style="border-color:rgba(255,210,63,.4)">
+      <div class="nft-skull">💀</div>
+      <div class="nft-tier" style="color:var(--gold)">Legendary</div>
+      <div class="nft-supply">500 NFTs</div>
+      <div class="nft-prob">5%</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2.5rem">
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Staking reward</div>
+      <div class="stat-val" style="font-size:1.5rem">50,000</div>
+      <div class="stat-sub">BLD / NFT / month</div>
+    </div>
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Burn-to-claim</div>
+      <div class="stat-val" style="font-size:1.5rem">5M BLD</div>
+      <div class="stat-sub">per skull burned</div>
+    </div>
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Max monthly emission</div>
+      <div class="stat-val" style="font-size:1.5rem">500M</div>
+      <div class="stat-sub">BLD if all staked</div>
+    </div>
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Mint price</div>
+      <div class="stat-val" style="font-size:1.5rem">0.1 SOL</div>
+      <div class="stat-sub">0.08 SOL whitelist</div>
+    </div>
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Max burn claims</div>
+      <div class="stat-val" style="font-size:1.5rem">50B BLD</div>
+      <div class="stat-sub">if entire collection burned</div>
+    </div>
+    <div class="stat-box" style="border:1px solid var(--border)">
+      <div class="stat-label">Reward vault</div>
+      <div class="stat-val" style="font-size:1.5rem">200B BLD</div>
+      <div class="stat-sub">community pool</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin-bottom:1rem;color:var(--bone)">MINT PHASES</h3>
+  <table class="ptable">
+    <thead><tr><th>Phase</th><th>Name</th><th>Supply</th><th>Price</th><th>Window</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Whitelist</td><td>500 NFTs</td><td>0.08 SOL</td><td>48 hours</td><td><span class="ptag ptag-scaled">pending</span></td></tr>
+      <tr><td>2</td><td>Public Mint</td><td>9,000 NFTs</td><td>0.10 SOL</td><td>Until sold out</td><td><span class="ptag ptag-scaled">pending</span></td></tr>
+      <tr><td>3</td><td>Staking Live</td><td>—</td><td>—</td><td>Post-mint</td><td><span class="ptag ptag-scaled">pending</span></td></tr>
+      <tr><td>4</td><td>Burn Event #1</td><td>—</td><td>—</td><td>30-day window</td><td><span class="ptag ptag-scaled">pending</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider"/>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-label">Phases</div>
+  <div class="section-title">ROADMAP</div>
+  <p class="section-desc">Four phases from genesis to full DAO governance and multi-chain expansion.</p>
+
+  <div class="roadmap-list">
+    <div class="rm-item">
+      <div class="rm-phase">01</div>
+      <div class="rm-content">
+        <div class="rm-status status-pending">⬜ PENDING</div>
+        <div class="rm-title">KEBANGKITAN TENGKORAK</div>
+        <div class="rm-tasks">Token launch · Website · Telegram &amp; Twitter · Airdrop 1M BLD</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-phase">02</div>
+      <div class="rm-content">
+        <div class="rm-status status-pending">⬜ PENDING</div>
+        <div class="rm-title">MEME MENYERANG</div>
+        <div class="rm-tasks">DEX listing on Raydium · Global meme contest · Meme DAO partnership · 10,000 holders milestone</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-phase">03</div>
+      <div class="rm-content">
+        <div class="rm-status status-pending">⬜ PENDING</div>
+        <div class="rm-title">DETH TO THE MOON</div>
+        <div class="rm-tasks">CMC &amp; CoinGecko listing · Burn event #1 · Skull NFTs release · NFT staking live</div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-phase">04</div>
+      <div class="rm-content">
+        <div class="rm-status status-pending">⬜ PENDING</div>
+        <div class="rm-title">DETHCENOMICS</div>
+        <div class="rm-tasks">DAO voting via Realms · Merchandise store · Multi-chain expansion to BNB Chain · Second audit</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2.5rem 0 1rem;color:var(--bone)">DEX &amp; EXCHANGE LISTINGS</h3>
+  <table class="ptable">
+    <thead><tr><th>Exchange</th><th>Chain</th><th>Type</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://raydium.io" target="_blank" style="color:inherit;text-decoration:none">Raydium</a></td><td>Solana</td><td>DEX</td><td><span class="ptag ptag-scaled">pending deploy</span></td></tr>
+      <tr><td>Jupiter</td><td>Solana</td><td>DEX</td><td><span class="ptag ptag-scaled">pending deploy</span></td></tr>
+      <tr><td>Orca</td><td>Solana</td><td>DEX</td><td><span class="ptag ptag-scaled">pending deploy</span></td></tr>
+      <tr><td>PancakeSwap</td><td>BNB Chain</td><td>DEX</td><td><span class="ptag ptag-prim">planned (phase 4)</span></td></tr>
+      <tr><td>CoinMarketCap</td><td>—</td><td>CEX listing</td><td><span class="ptag ptag-prim">planned</span></td></tr>
+      <tr><td>CoinGecko</td><td>—</td><td>CEX listing</td><td><span class="ptag ptag-prim">planned</span></td></tr>
+      <tr><td>DEXTools</td><td>—</td><td>Analytics</td><td><span class="ptag ptag-prim">planned</span></td></tr>
+      <tr><td>Birdeye</td><td>—</td><td>Analytics</td><td><span class="ptag ptag-prim">planned</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider"/>
+
+<!-- DATABASE / CODE -->
+<section id="database">
+  <div class="section-label">Multi-language</div>
+  <div class="section-title">FULL DATABASE</div>
+  <p class="section-desc">Complete BLD token database in JavaScript, Python, C++, JSON, and SQL — ready to integrate, plus the standalone files bundled in the repo.</p>
+
+  <div class="code-tabs">
+    <div class="code-tab active" onclick="switchTab(event,'json')">JSON</div>
+    <div class="code-tab" onclick="switchTab(event,'sql')">SQL</div>
+    <div class="code-tab" onclick="switchTab(event,'python')">Python</div>
+    <div class="code-tab" onclick="switchTab(event,'js')">JavaScript</div>
+    <div class="code-tab" onclick="switchTab(event,'cpp')">C++</div>
+  </div>
+
+  <div id="tab-json" class="code-panel active"><pre>{
+  <span class="key">"token"</span>: {
+    <span class="key">"name"</span>:              <span class="str">"Bit Laner Deth"</span>,
+    <span class="key">"symbol"</span>:            <span class="str">"BLD"</span>,
+    <span class="key">"network"</span>:           <span class="str">"Solana SPL mainnet-beta"</span>,
+    <span class="key">"decimals"</span>:          <span class="num">9</span>,
+    <span class="key">"totalSupply"</span>:       <span class="num">1000000000000</span>,
+    <span class="key">"circulatingSupply"</span>: <span class="num">600000000000</span>,
+    <span class="key">"contractAddress"</span>:   <span class="str">"YOUR_SOLANA_PUBLICKEY_HERE"</span>,
+    <span class="key">"mintAuthority"</span>:     <span class="kw">null</span>,
+    <span class="key">"freezeAuthority"</span>:   <span class="kw">null</span>,
+    <span class="key">"version"</span>:           <span class="str">"2.0"</span>
+  },
+  <span class="key">"tokenomics"</span>: {
+    <span class="key">"burnedAtLaunch"</span>:   { <span class="key">"pct"</span>: <span class="num">40</span>, <span class="key">"amount"</span>: <span class="num">400000000000</span> },
+    <span class="key">"lockedLiquidity"</span>:  { <span class="key">"pct"</span>: <span class="num">30</span>, <span class="key">"amount"</span>: <span class="num">300000000000</span> },
+    <span class="key">"communityAirdrop"</span>: { <span class="key">"pct"</span>: <span class="num">20</span>, <span class="key">"amount"</span>: <span class="num">200000000000</span> },
+    <span class="key">"devTeam"</span>:          { <span class="key">"pct"</span>: <span class="num">10</span>, <span class="key">"amount"</span>: <span class="num">100000000000</span>, <span class="key">"vested"</span>: <span class="kw">true</span> }
+  },
+  <span class="key">"nft"</span>: {
+    <span class="key">"collection"</span>:        <span class="str">"BLD Skull Series"</span>,
+    <span class="key">"supply"</span>:            <span class="num">10000</span>,
+    <span class="key">"mintPrice"</span>:         <span class="num">0.1</span>,
+    <span class="key">"whitelistPrice"</span>:    <span class="num">0.08</span>,
+    <span class="key">"royalty"</span>:           <span class="num">5</span>,
+    <span class="key">"stakingReward"</span>:     <span class="num">50000</span>,
+    <span class="key">"burnClaim"</span>:         <span class="num">5000000</span>,
+    <span class="key">"candyMachine"</span>:      <span class="str">"YOUR_CANDY_MACHINE_ADDRESS_HERE"</span>
+  },
+  <span class="key">"fees"</span>: {
+    <span class="key">"total"</span>:             <span class="num">10</span>,
+    <span class="key">"holderRedist"</span>:      <span class="num">5</span>,
+    <span class="key">"liquidityPool"</span>:     <span class="num">3</span>,
+    <span class="key">"marketing"</span>:         <span class="num">2</span>
+  }
+}</pre></div>
+
+  <div id="tab-sql" class="code-panel"><pre><span class="cm">-- BLD Token Full Database Schema</span>
+<span class="cm">-- Network: Solana Mainnet-Beta</span>
+
+<span class="kw">CREATE DATABASE IF NOT EXISTS</span> bld_token
+  <span class="kw">CHARACTER SET</span> utf8mb4 <span class="kw">COLLATE</span> utf8mb4_unicode_ci;
+<span class="kw">USE</span> bld_token;
+
+<span class="kw">CREATE TABLE</span> token_info (
+  id               <span class="kw">INT</span> <span class="kw">AUTO_INCREMENT PRIMARY KEY</span>,
+  name             <span class="kw">VARCHAR</span>(<span class="num">64</span>)   <span class="kw">NOT NULL</span>,
+  symbol           <span class="kw">VARCHAR</span>(<span class="num">16</span>)   <span class="kw">NOT NULL</span>,
+  network          <span class="kw">VARCHAR</span>(<span class="num">64</span>)   <span class="kw">NOT NULL</span>,
+  decimals         <span class="kw">TINYINT</span>        <span class="kw">DEFAULT</span> <span class="num">9</span>,
+  total_supply     <span class="kw">BIGINT</span>         <span class="kw">NOT NULL</span>,
+  circulating      <span class="kw">BIGINT</span>         <span class="kw">NOT NULL</span>,
+  contract_address <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  mint_authority   <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  freeze_authority <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  version          <span class="kw">VARCHAR</span>(<span class="num">8</span>)    <span class="kw">DEFAULT</span> <span class="str">'2.0'</span>,
+  status           <span class="kw">VARCHAR</span>(<span class="num">32</span>)   <span class="kw">DEFAULT</span> <span class="str">'pre-mainnet'</span>,
+  updated_at       <span class="kw">DATETIME</span>       <span class="kw">DEFAULT CURRENT_TIMESTAMP</span>
+);
+
+<span class="kw">CREATE TABLE</span> tokenomics (
+  id         <span class="kw">INT AUTO_INCREMENT PRIMARY KEY</span>,
+  bucket     <span class="kw">VARCHAR</span>(<span class="num">64</span>)   <span class="kw">NOT NULL</span>,
+  pct        <span class="kw">DECIMAL</span>(<span class="num">5,2</span>) <span class="kw">NOT NULL</span>,
+  amount     <span class="kw">BIGINT</span>         <span class="kw">NOT NULL</span>,
+  locked     <span class="kw">BOOLEAN</span>        <span class="kw">DEFAULT FALSE</span>,
+  vested     <span class="kw">BOOLEAN</span>        <span class="kw">DEFAULT FALSE</span>,
+  notes      <span class="kw">TEXT</span>
+);
+
+<span class="kw">CREATE TABLE</span> nft_collection (
+  id               <span class="kw">INT AUTO_INCREMENT PRIMARY KEY</span>,
+  collection_name  <span class="kw">VARCHAR</span>(<span class="num">128</span>),
+  total_supply     <span class="kw">INT</span>,
+  mint_price_sol   <span class="kw">DECIMAL</span>(<span class="num">10,4</span>),
+  wl_price_sol     <span class="kw">DECIMAL</span>(<span class="num">10,4</span>),
+  royalty_pct      <span class="kw">DECIMAL</span>(<span class="num">5,2</span>),
+  staking_reward   <span class="kw">BIGINT</span>,
+  burn_claim       <span class="kw">BIGINT</span>,
+  candy_machine    <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  standard         <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  storage          <span class="kw">VARCHAR</span>(<span class="num">32</span>)
+);
+
+<span class="kw">CREATE TABLE</span> roadmap (
+  id          <span class="kw">INT AUTO_INCREMENT PRIMARY KEY</span>,
+  phase       <span class="kw">TINYINT</span>       <span class="kw">NOT NULL</span>,
+  name        <span class="kw">VARCHAR</span>(<span class="num">128</span>)  <span class="kw">NOT NULL</span>,
+  tasks       <span class="kw">TEXT</span>,
+  status      <span class="kw">ENUM</span>(<span class="str">'done'</span>,<span class="str">'active'</span>,<span class="str">'pending'</span>) <span class="kw">DEFAULT</span> <span class="str">'pending'</span>
+);
+
+<span class="kw">CREATE TABLE</span> contract_addresses (
+  id       <span class="kw">INT AUTO_INCREMENT PRIMARY KEY</span>,
+  label    <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  address  <span class="kw">VARCHAR</span>(<span class="num">64</span>),
+  network  <span class="kw">VARCHAR</span>(<span class="num">32</span>),
+  status   <span class="kw">VARCHAR</span>(<span class="num">32</span>)
+);
+
+<span class="cm">-- ── DATA ──</span>
+<span class="kw">INSERT INTO</span> token_info
+  (name,symbol,network,decimals,total_supply,circulating,contract_address,version,status)
+<span class="kw">VALUES</span>
+  (<span class="str">'Bit Laner Deth'</span>,<span class="str">'BLD'</span>,<span class="str">'Solana mainnet-beta'</span>,<span class="num">9</span>,
+   <span class="num">1000000000000</span>,<span class="num">600000000000</span>,<span class="str">'YOUR_SOLANA_PUBLICKEY_HERE'</span>,<span class="str">'2.0'</span>,<span class="str">'pre-mainnet'</span>);
+
+<span class="kw">INSERT INTO</span> tokenomics (bucket,pct,amount,locked,vested,notes) <span class="kw">VALUES</span>
+  (<span class="str">'Burned at launch'</span>,   <span class="num">40</span>,<span class="num">400000000000</span>,<span class="kw">FALSE</span>,<span class="kw">FALSE</span>,<span class="str">'Genesis burn permanent'</span>),
+  (<span class="str">'Locked liquidity'</span>,   <span class="num">30</span>,<span class="num">300000000000</span>,<span class="kw">TRUE</span>, <span class="kw">FALSE</span>,<span class="str">'Raydium LP locked'</span>),
+  (<span class="str">'Community airdrop'</span>,  <span class="num">20</span>,<span class="num">200000000000</span>,<span class="kw">FALSE</span>,<span class="kw">FALSE</span>,<span class="str">'NFT rewards + airdrops'</span>),
+  (<span class="str">'Dev and team'</span>,       <span class="num">10</span>,<span class="num">100000000000</span>,<span class="kw">FALSE</span>,<span class="kw">TRUE</span>, <span class="str">'12-month vesting'</span>);
+
+<span class="kw">INSERT INTO</span> nft_collection
+  (collection_name,total_supply,mint_price_sol,wl_price_sol,royalty_pct,
+   staking_reward,burn_claim,candy_machine,standard,storage)
+<span class="kw">VALUES</span>
+  (<span class="str">'BLD Skull Series'</span>,<span class="num">10000</span>,<span class="num">0.1000</span>,<span class="num">0.0800</span>,<span class="num">5.00</span>,
+   <span class="num">50000</span>,<span class="num">5000000</span>,<span class="str">'YOUR_CANDY_MACHINE_ADDRESS_HERE'</span>,
+   <span class="str">'Metaplex NFT v1.1'</span>,<span class="str">'Arweave/IPFS'</span>);
+
+<span class="kw">INSERT INTO</span> roadmap (phase,name,tasks,status) <span class="kw">VALUES</span>
+  (<span class="num">1</span>,<span class="str">'Kebangkitan Tengkorak'</span>,<span class="str">'Token launch, Website, Telegram, Airdrop 1M BLD'</span>,<span class="str">'pending'</span>),
+  (<span class="num">2</span>,<span class="str">'Meme Menyerang'</span>,<span class="str">'DEX listing, Meme contest, DAO partnership'</span>,<span class="str">'pending'</span>),
+  (<span class="num">3</span>,<span class="str">'Deth to the Moon'</span>,<span class="str">'CMC listing, Burn event #1, Skull NFTs release'</span>,<span class="str">'pending'</span>),
+  (<span class="num">4</span>,<span class="str">'DETHCENOMICS'</span>,<span class="str">'DAO voting, Merchandise, Multi-chain'</span>,<span class="str">'pending'</span>);
+
+<span class="kw">INSERT INTO</span> contract_addresses (label,address,network,status) <span class="kw">VALUES</span>
+  (<span class="str">'BLD SPL Token'</span>,         <span class="str">'YOUR_SOLANA_PUBLICKEY_HERE'</span>,      <span class="str">'mainnet-beta'</span>,<span class="str">'pending'</span>),
+  (<span class="str">'NFT Candy Machine v3'</span>,  <span class="str">'YOUR_CANDY_MACHINE_ADDRESS_HERE'</span>, <span class="str">'mainnet-beta'</span>,<span class="str">'pending'</span>),
+  (<span class="str">'Raydium LP'</span>,            <span class="str">'pending'</span>,                         <span class="str">'mainnet-beta'</span>,<span class="str">'pending'</span>),
+  (<span class="str">'Treasury Squads v4'</span>,    <span class="str">'pending'</span>,                         <span class="str">'mainnet-beta'</span>,<span class="str">'pending'</span>);</pre></div>
+
+  <div id="tab-python" class="code-panel"><pre><span class="cm"># bld_token.py — Full BLD Token Database</span>
+<span class="kw">from</span> __future__ <span class="kw">import</span> annotations
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass, field
+<span class="kw">from</span> typing <span class="kw">import</span> Optional, List
+<span class="kw">from</span> enum <span class="kw">import</span> Enum, auto
+<span class="kw">import</span> json, datetime
+
+<span class="kw">class</span> Network(Enum):
+    MAINNET_BETA = <span class="str">"mainnet-beta"</span>
+    DEVNET       = <span class="str">"devnet"</span>
+
+<span class="kw">class</span> RoadmapStatus(Enum):
+    DONE    = <span class="str">"done"</span>
+    ACTIVE  = <span class="str">"active"</span>
+    PENDING = <span class="str">"pending"</span>
+
+@dataclass(frozen=True)
+<span class="kw">class</span> BLDToken:
+    name:             str           = <span class="str">"Bit Laner Deth"</span>
+    symbol:           str           = <span class="str">"BLD"</span>
+    network:          Network       = Network.MAINNET_BETA
+    decimals:         int           = <span class="num">9</span>
+    total_supply:     int           = <span class="num">1_000_000_000_000</span>
+    circulating:      int           = <span class="num">600_000_000_000</span>
+    contract_address: Optional[str] = <span class="str">"YOUR_SOLANA_PUBLICKEY_HERE"</span>
+    version:          str           = <span class="str">"2.0"</span>
+
+    @property
+    <span class="kw">def</span> burned(self) -> int:
+        <span class="kw">return</span> self.total_supply - self.circulating
+
+    <span class="kw">def</span> to_dict(self) -> dict:
+        <span class="kw">return</span> {
+            <span class="str">"name"</span>:            self.name,
+            <span class="str">"symbol"</span>:          self.symbol,
+            <span class="str">"network"</span>:         self.network.value,
+            <span class="str">"decimals"</span>:        self.decimals,
+            <span class="str">"total_supply"</span>:    self.total_supply,
+            <span class="str">"circulating"</span>:     self.circulating,
+            <span class="str">"burned"</span>:          self.burned,
+            <span class="str">"contract_address"</span>:self.contract_address,
+            <span class="str">"version"</span>:         self.version,
+        }
+
+@dataclass
+<span class="kw">class</span> NFTCollection:
+    name:           str   = <span class="str">"BLD Skull Series"</span>
+    supply:         int   = <span class="num">10_000</span>
+    mint_price_sol: float = <span class="num">0.1</span>
+    wl_price_sol:   float = <span class="num">0.08</span>
+    royalty_pct:    float = <span class="num">5.0</span>
+    staking_reward: int   = <span class="num">50_000</span>
+    burn_claim:     int   = <span class="num">5_000_000</span>
+    candy_machine:  Optional[str] = <span class="str">"YOUR_CANDY_MACHINE_ADDRESS_HERE"</span>
+
+TOKEN = BLDToken()
+NFT   = NFTCollection()
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    <span class="kw">print</span>(json.dumps(TOKEN.to_dict(), indent=<span class="num">2</span>))</pre></div>
+
+  <div id="tab-js" class="code-panel"><pre><span class="cm">// bld_token.js — Full BLD Database</span>
+<span class="kw">const</span> BLD = {
+  token: {
+    name:             <span class="str">"Bit Laner Deth"</span>,
+    symbol:           <span class="str">"$BLD"</span>,
+    network:          <span class="str">"solana-mainnet-beta"</span>,
+    decimals:         <span class="num">9</span>,
+    totalSupply:      <span class="num">1_000_000_000_000</span>,
+    circulating:      <span class="num">600_000_000_000</span>,
+    contractAddress:  <span class="str">"YOUR_SOLANA_PUBLICKEY_HERE"</span>,
+    mintAuthority:    <span class="kw">null</span>,
+    freezeAuthority:  <span class="kw">null</span>,
+    version:          <span class="str">"2.0"</span>,
+  },
+  tokenomics: {
+    burnedAtLaunch:   { pct: <span class="num">40</span>, amount: <span class="num">400_000_000_000</span> },
+    lockedLiquidity:  { pct: <span class="num">30</span>, amount: <span class="num">300_000_000_000</span>, locked: <span class="kw">true</span> },
+    communityAirdrop: { pct: <span class="num">20</span>, amount: <span class="num">200_000_000_000</span> },
+    devTeam:          { pct: <span class="num">10</span>, amount: <span class="num">100_000_000_000</span>, vested: <span class="kw">true</span>, months: <span class="num">12</span> },
+  },
+  fees: {
+    total:         <span class="num">10</span>,
+    holderRedist:  <span class="num">5</span>,
+    liquidityPool: <span class="num">3</span>,
+    marketing:     <span class="num">2</span>,
+  },
+  nft: {
+    name:          <span class="str">"BLD Skull Series"</span>,
+    supply:        <span class="num">10_000</span>,
+    mintPrice:     <span class="num">0.1</span>,
+    wlPrice:       <span class="num">0.08</span>,
+    royalty:       <span class="num">5</span>,
+    stakingReward: <span class="num">50_000</span>,
+    burnClaim:     <span class="num">5_000_000</span>,
+    candyMachine:  <span class="str">"YOUR_CANDY_MACHINE_ADDRESS_HERE"</span>,
+    rarity: [
+      { tier: <span class="str">"Common"</span>,    supply: <span class="num">5500</span>, prob: <span class="num">0.55</span> },
+      { tier: <span class="str">"Rare"</span>,       supply: <span class="num">2800</span>, prob: <span class="num">0.28</span> },
+      { tier: <span class="str">"Epic"</span>,       supply: <span class="num">1200</span>, prob: <span class="num">0.12</span> },
+      { tier: <span class="str">"Legendary"</span>,  supply: <span class="num">500</span>,  prob: <span class="num">0.05</span> },
+    ],
+  },
+  roadmap: [
+    { phase:<span class="num">1</span>, name:<span class="str">"Kebangkitan Tengkorak"</span>, status:<span class="str">"pending"</span> },
+    { phase:<span class="num">2</span>, name:<span class="str">"Meme Menyerang"</span>,        status:<span class="str">"pending"</span> },
+    { phase:<span class="num">3</span>, name:<span class="str">"Deth to the Moon"</span>,      status:<span class="str">"pending"</span> },
+    { phase:<span class="num">4</span>, name:<span class="str">"DETHCENOMICS"</span>,          status:<span class="str">"pending"</span> },
+  ],
+};
+
+<span class="kw">export default</span> BLD;</pre></div>
+
+  <div id="tab-cpp" class="code-panel"><pre><span class="cm">// BLDToken.hpp — C++ Full Database</span>
+<span class="kw">#pragma once</span>
+<span class="kw">#include</span> <span class="str">&lt;string&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;optional&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;vector&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;cstdint&gt;</span>
+
+<span class="kw">namespace</span> BLD {
+
+<span class="kw">inline constexpr</span> uint64_t TOTAL_SUPPLY  = <span class="num">1'000'000'000'000ULL</span>;
+<span class="kw">inline constexpr</span> uint64_t CIRCULATING   =   <span class="num">600'000'000'000ULL</span>;
+<span class="kw">inline constexpr</span> uint8_t  DECIMALS      = <span class="num">9</span>;
+<span class="kw">inline constexpr</span> float    TX_FEE_PCT    = <span class="num">10.0f</span>;
+
+<span class="kw">struct</span> TokenInfo {
+    std::string              name             = <span class="str">"Bit Laner Deth"</span>;
+    std::string              symbol           = <span class="str">"BLD"</span>;
+    std::string              network          = <span class="str">"mainnet-beta"</span>;
+    uint8_t                  decimals         = DECIMALS;
+    uint64_t                 total_supply     = TOTAL_SUPPLY;
+    uint64_t                 circulating      = CIRCULATING;
+    std::optional&lt;std::string&gt; contract_addr = <span class="str">"YOUR_SOLANA_PUBLICKEY_HERE"</span>;
+    std::string              version          = <span class="str">"2.0"</span>;
+
+    uint64_t burned() <span class="kw">const</span> <span class="kw">noexcept</span> {
+        <span class="kw">return</span> total_supply - circulating;
+    }
+};
+
+<span class="kw">struct</span> NFTCollection {
+    std::string              name          = <span class="str">"BLD Skull Series"</span>;
+    uint32_t                 supply        = <span class="num">10'000</span>;
+    float                    mint_price    = <span class="num">0.1f</span>;
+    float                    wl_price      = <span class="num">0.08f</span>;
+    float                    royalty       = <span class="num">5.0f</span>;
+    uint64_t                 staking_rew   = <span class="num">50'000</span>;
+    uint64_t                 burn_claim    = <span class="num">5'000'000</span>;
+    std::optional&lt;std::string&gt; candy_machine = <span class="str">"YOUR_CANDY_MACHINE_ADDRESS_HERE"</span>;
+};
+
+<span class="kw">inline const</span> TokenInfo TOKEN{};
+<span class="kw">inline const</span> NFTCollection NFT{};
+
+} <span class="cm">// namespace BLD</span></pre></div>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2.5rem 0 1rem;color:var(--bone)">BUNDLED FILES</h3>
+  <p class="tool-note" style="margin-bottom:1rem">The full multi-language database, ready to pull into a client or backend — including the Pythagoras Verifier ledger below.</p>
+  <table class="ptable">
+    <thead><tr><th>File</th><th>Format</th><th>Contains</th></tr></thead>
+    <tbody>
+      <tr><td>web3/bld_full_database.json</td><td>JSON</td><td>token, tokenomics, nft, contracts, roadmap, dexListings, security, api, pythagoras</td></tr>
+      <tr><td>web3/bld_full_database.sql</td><td>SQL</td><td>Full relational schema + inserts, incl. <code>pythagoras_records</code></td></tr>
+      <tr><td>web3/bld_web3_db.py</td><td>Python</td><td>Dataclasses + exporter for the same dataset</td></tr>
+      <tr><td>gemini/pythagoras_data.json</td><td>JSON</td><td>12-row Pythagorean triples ledger</td></tr>
+      <tr><td>gemini/schema.sql</td><td>SQL</td><td><code>pythagoras_records</code> table standalone</td></tr>
+      <tr><td>gemini/data.csv</td><td>CSV</td><td>Ledger export</td></tr>
+      <tr><td>gemini/PythagorasView.qml</td><td>QML</td><td>Qt Quick calculator + ledger list view</td></tr>
+      <tr><td>gemini/right_triangle_5_12_13.png</td><td>PNG</td><td>Rendered 5-12-13 triangle</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider"/>
+
+<!-- API -->
+<section id="api">
+  <div class="section-label">REST</div>
+  <div class="section-title">API REFERENCE</div>
+  <p class="section-desc">The BLD API base URL is installed below — every endpoint in the reference is relative to it. Auth is a Bearer JWT plus wallet signature for mutating calls.</p>
+
+  <div class="contract-card">
+    <div class="contract-network">● API BASE URL</div>
+    <div class="contract-addr" id="api-base-url">https://api.bld.finance</div>
+    <div style="display:flex;gap:.75rem;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap">
+      <button class="copy-btn" onclick="copyApiUrl(event)">⧉ COPY URL</button>
+      <button class="btn-secondary" style="padding:.5rem 1.25rem;font-size:12px" onclick="pingApi()">⚡ PING API</button>
+      <span class="badge-pending" id="api-status">⏳ PENDING MAINNET DEPLOY</span>
+    </div>
+    <div class="contract-fields">
+      <div class="cf"><div class="cf-key">Auth</div><div class="cf-val">Bearer JWT + wallet signature</div></div>
+      <div class="cf"><div class="cf-key">Rate limit</div><div class="cf-val">300 req/min</div></div>
+      <div class="cf"><div class="cf-key">Format</div><div class="cf-val">JSON</div></div>
+      <div class="cf"><div class="cf-key">Status</div><div class="cf-val">Pre-mainnet — endpoints not yet live</div></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2rem 0 1rem;color:var(--bone)">TOKEN ENDPOINTS</h3>
+  <table class="ptable">
+    <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/token/info</td><td>Token metadata</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/token/supply</td><td>Supply breakdown</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/token/balance/{wallet}</td><td>Wallet BLD balance</td></tr>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/token/transfer</td><td>Send BLD</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2rem 0 1rem;color:var(--bone)">NFT ENDPOINTS</h3>
+  <table class="ptable">
+    <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/nft/collection</td><td>Collection info</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/nft/{mint_address}</td><td>Single NFT metadata</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/nft/wallet/{wallet}</td><td>NFTs owned by wallet</td></tr>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/nft/mint</td><td>Mint skull NFT</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2rem 0 1rem;color:var(--bone)">STAKING ENDPOINTS</h3>
+  <table class="ptable">
+    <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/staking/stake</td><td>Stake NFT</td></tr>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/staking/unstake</td><td>Unstake NFT</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/staking/pending/{wallet}</td><td>Pending BLD rewards</td></tr>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/staking/claim</td><td>Claim rewards</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin:2rem 0 1rem;color:var(--bone)">BURN ENDPOINTS</h3>
+  <table class="ptable">
+    <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ptag ptag-scaled">POST</span></td><td>/v1/burn/claim</td><td>Burn NFT, receive 5M BLD</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/burn/history/{wallet}</td><td>Burn history</td></tr>
+      <tr><td><span class="ptag ptag-prim">GET</span></td><td>/v1/burn/vault</td><td>Vault balance</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider"/>
+
+<!-- PYTHAGORAS VERIFIER TOOL -->
+<section id="tools">
+  <div class="section-label">Web3 Utility</div>
+  <div class="section-title">PYTHAGORAS VERIFIER</div>
+  <p class="section-desc">A small on-chain-flavored tool bundled with $BLD — connect a wallet, compute a right-triangle hypotenuse, and watch it render live and log into the same multi-format database used for the token itself (JSON, SQL, CSV, QML).</p>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <h3>Wallet + Calculator</h3>
+      <button class="btn-secondary" style="width:100%;margin-bottom:1rem" onclick="connectWallet()">CONNECT WALLET</button>
+      <p id="walletAddress" class="tool-note" style="margin-bottom:1rem">Status: Disconnected</p>
+      <input type="number" id="sideA" class="tool-input" placeholder="Side A">
+      <input type="number" id="sideB" class="tool-input" placeholder="Side B">
+      <button class="btn-primary" style="width:100%" onclick="calculateHypotenuse()">CALCULATE HYPOTENUSE</button>
+      <p id="result" style="font-family:var(--mono);font-size:13px;color:var(--gold);margin-top:1rem">Result: —</p>
+    </div>
+
+    <div class="tool-card">
+      <h3>Triangle Render</h3>
+      <canvas id="triangleCanvas" width="320" height="280" style="width:100%;background:var(--dark);border:1px solid var(--border)"></canvas>
+      <p class="tool-note">Live canvas draw of the current a / b / c triple · click any ledger row to load it</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-size:1.4rem;letter-spacing:1px;margin-bottom:1rem;color:var(--bone)">TRIPLES LEDGER</h3>
+  <table class="ptable" id="triplesTable">
+    <thead><tr><th>ID</th><th>Side A</th><th>Side B</th><th>Hypotenuse C</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr onclick="loadTriple(3,4,5)"><td>1</td><td>3</td><td>4</td><td>5</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(5,12,13)"><td>2</td><td>5</td><td>12</td><td>13</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(8,15,17)"><td>3</td><td>8</td><td>15</td><td>17</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(7,24,25)"><td>4</td><td>7</td><td>24</td><td>25</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(20,21,29)"><td>5</td><td>20</td><td>21</td><td>29</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(9,40,41)"><td>6</td><td>9</td><td>40</td><td>41</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(12,35,37)"><td>7</td><td>12</td><td>35</td><td>37</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(11,60,61)"><td>8</td><td>11</td><td>60</td><td>61</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(28,45,53)"><td>9</td><td>28</td><td>45</td><td>53</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(33,56,65)"><td>10</td><td>33</td><td>56</td><td>65</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(16,63,65)"><td>11</td><td>16</td><td>63</td><td>65</td><td><span class="ptag ptag-prim">primitive</span></td></tr>
+      <tr onclick="loadTriple(6,8,10)"><td>12</td><td>6</td><td>8</td><td>10</td><td><span class="ptag ptag-scaled">scaled ×2</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-tabs">
+    <div class="code-tab active" onclick="switchPTab(event,'json')">JSON</div>
+    <div class="code-tab" onclick="switchPTab(event,'sql')">SQL</div>
+    <div class="code-tab" onclick="switchPTab(event,'csv')">CSV</div>
+    <div class="code-tab" onclick="switchPTab(event,'qml')">QML</div>
+  </div>
+
+  <div id="ptab-json" class="code-panel active"><pre>{
+  <span class="key">"theorem"</span>: <span class="str">"Pythagorean Theorem"</span>,
+  <span class="key">"formula"</span>:  <span class="str">"a^2 + b^2 = c^2"</span>,
+  <span class="key">"meta"</span>: { <span class="key">"module"</span>: <span class="str">"pythagoras-verifier"</span>, <span class="key">"version"</span>: <span class="str">"1.1"</span> },
+  <span class="key">"triples"</span>: [
+    { <span class="key">"id"</span>: <span class="num">1</span>, <span class="key">"a"</span>: <span class="num">3</span>, <span class="key">"b"</span>: <span class="num">4</span>, <span class="key">"c"</span>: <span class="num">5</span>, <span class="key">"primitive"</span>: <span class="kw">true</span> },
+    { <span class="key">"id"</span>: <span class="num">2</span>, <span class="key">"a"</span>: <span class="num">5</span>, <span class="key">"b"</span>: <span class="num">12</span>, <span class="key">"c"</span>: <span class="num">13</span>, <span class="key">"primitive"</span>: <span class="kw">true</span> },
+    <span class="cm">// … 10 more rows, see gemini/pythagoras_data.json</span>
+    { <span class="key">"id"</span>: <span class="num">12</span>, <span class="key">"a"</span>: <span class="num">6</span>, <span class="key">"b"</span>: <span class="num">8</span>, <span class="key">"c"</span>: <span class="num">10</span>, <span class="key">"primitive"</span>: <span class="kw">false</span>, <span class="key">"notes"</span>: <span class="str">"2x scale of (3,4,5)"</span> }
+  ]
+}</pre></div>
+
+  <div id="ptab-sql" class="code-panel"><pre><span class="cm">-- gemini/schema.sql — mirrored below into bld_full_database.sql</span>
+<span class="kw">CREATE TABLE IF NOT EXISTS</span> pythagoras_records (
+    id             <span class="kw">INT PRIMARY KEY AUTO_INCREMENT</span>,
+    wallet_address <span class="kw">VARCHAR</span>(64) <span class="kw">NOT NULL</span>,
+    side_a         <span class="kw">DOUBLE NOT NULL</span>,
+    side_b         <span class="kw">DOUBLE NOT NULL</span>,
+    hypotenuse_c   <span class="kw">DOUBLE NOT NULL</span>,
+    is_primitive   <span class="kw">BOOLEAN DEFAULT TRUE</span>,
+    notes          <span class="kw">VARCHAR</span>(255) <span class="kw">NULL</span>,
+    created_at     <span class="kw">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>
+);
+
+<span class="kw">INSERT INTO</span> pythagoras_records (wallet_address, side_a, side_b, hypotenuse_c, is_primitive) <span class="kw">VALUES</span>
+(<span class="str">'YOUR_SOLANA_PUBLICKEY_HERE'</span>, <span class="num">3</span>,  <span class="num">4</span>,  <span class="num">5</span>,  <span class="kw">TRUE</span>),
+(<span class="str">'YOUR_SOLANA_PUBLICKEY_HERE'</span>, <span class="num">5</span>,  <span class="num">12</span>, <span class="num">13</span>, <span class="kw">TRUE</span>);
+<span class="cm">-- … 10 more rows, see gemini/schema.sql</span></pre></div>
+
+  <div id="ptab-csv" class="code-panel"><pre><span class="cm">id,wallet_address,side_a,side_b,hypotenuse_c,is_primitive,notes</span>
+1,YOUR_SOLANA_PUBLICKEY_HERE,3,4,5,true,
+2,YOUR_SOLANA_PUBLICKEY_HERE,5,12,13,true,
+<span class="cm">... 10 more rows, see gemini/data.csv</span>
+12,YOUR_SOLANA_PUBLICKEY_HERE,6,8,10,false,2x scale of (3,4,5)</pre></div>
+
+  <div id="ptab-qml" class="code-panel"><pre><span class="cm">// gemini/PythagorasView.qml — full file bundled alongside this page</span>
+<span class="kw">import</span> QtQuick 2.15
+<span class="kw">import</span> QtQuick.Controls 2.15
+
+Rectangle {
+    width: <span class="num">420</span>; height: <span class="num">560</span>; color: <span class="str">"#0f172a"</span>
+    property var triples: [ { a: <span class="num">3</span>, b: <span class="num">4</span>, c: <span class="num">5</span>, primitive: <span class="kw">true</span> }, <span class="cm">/* …12 rows */</span> ]
+    <span class="cm">// ListView renders the ledger; tapping a row loads it into the calculator above</span>
+}</pre></div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SECURITY -->
+<section id="security">
+  <div class="section-label">Audit</div>
+  <div class="section-title">SECURITY</div>
+  <p class="section-desc">Audited by OtterSec v2.0. Score 94/100. Zero critical findings. Found a bug? Report it privately per our <a href="https://github.com/Tsukimarf/Token2025/blob/main/SECURITY.md" target="_blank" style="color:var(--skull)">security policy</a> — please don't open a public issue.</p>
+
+  <div class="audit-grid">
+    <div class="audit-box">
+      <div class="audit-num" style="color:#4ade80">0</div>
+      <div class="audit-label">Critical</div>
+    </div>
+    <div class="audit-box">
+      <div class="audit-num" style="color:var(--gold)">2</div>
+      <div class="audit-label">Medium</div>
+    </div>
+    <div class="audit-box">
+      <div class="audit-num" style="color:var(--ember)">3</div>
+      <div class="audit-label">Low</div>
+    </div>
+    <div class="audit-box">
+      <div class="audit-num" style="color:rgba(245,240,232,.4)">1</div>
+      <div class="audit-label">Info</div>
+    </div>
+    <div class="audit-box">
+      <div class="audit-num" style="color:var(--skull)">94</div>
+      <div class="audit-label">Score / 100</div>
+    </div>
+  </div>
+
+  <div class="check-list">
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">Mint authority disabled</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">Freeze authority revoked</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">Reentrancy protection</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">PDA ownership validated</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">Integer overflow (checked_add/sub)</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-pass">✓</span><span class="check-label">On-chain verification (solana-verify)</span><span class="check-pass" style="font-family:var(--mono);font-size:11px">PASS</span></div>
+    <div class="check-item"><span class="check-icon check-warn">⚠</span><span class="check-label">Reward vault drain limit</span><span class="check-warn" style="font-family:var(--mono);font-size:11px">MITIGATED v2.1</span></div>
+    <div class="check-item"><span class="check-icon check-warn">⚠</span><span class="check-label">NFT metadata mutability</span><span class="check-warn" style="font-family:var(--mono);font-size:11px">PENDING v2.1</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">💀 BLD</div>
+  <div class="footer-sub">Bit Laner Deth · Kisaran, North Sumatra, Indonesia · 2025</div>
+  <div class="footer-links">
+    <a href="https://github.com/Tsukimarf/Token2025" target="_blank">GitHub</a>
+    <a href="https://solscan.io" target="_blank">Solscan</a>
+    <a href="https://raydium.io" target="_blank">Raydium</a>
+    <a href="https://magiceden.io" target="_blank">Magic Eden</a>
+    <a href="https://ottersec.notion.site" target="_blank">Audit</a>
+    <a href="https://github.com/Tsukimarf/Token2025/blob/main/SECURITY.md" target="_blank">Security Policy</a>
+  </div>
+  <p class="footer-disclaimer">BLD is a meme coin created for entertainment and community building. Cryptocurrency investments carry high risk. Never invest more than you can afford to lose. Nothing here constitutes financial, legal, or investment advice. Always DYOR.</p>
+</footer>
+
+<script>
+const BLD_API_BASE_URL = "https://api.bld.finance";
+
+function copyAddr(event) {
+  const addr = document.getElementById('contract-addr').textContent;
+  navigator.clipboard.writeText(addr).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✓ COPIED!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+}
+
+function copyApiUrl(event) {
+  navigator.clipboard.writeText(BLD_API_BASE_URL).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✓ COPIED!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+}
+
+async function pingApi() {
+  const statusEl = document.getElementById('api-status');
+  statusEl.textContent = '⏳ CHECKING…';
+  try {
+    const res = await fetch(BLD_API_BASE_URL + '/v1/token/info', { method: 'GET', mode: 'cors' });
+    if (res.ok) {
+      statusEl.textContent = '✅ LIVE — ' + res.status;
+      statusEl.style.color = '#4ade80';
+    } else {
+      statusEl.textContent = '⚠ RESPONDED — ' + res.status;
+      statusEl.style.color = 'var(--gold)';
+    }
+  } catch (err) {
+    statusEl.textContent = '⏳ PENDING MAINNET DEPLOY (unreachable)';
+    statusEl.style.color = 'var(--gold)';
+  }
+}
+
+function switchTab(event, name) {
+  document.querySelectorAll('#database .code-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#database .code-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+/* ── PYTHAGORAS VERIFIER ── */
+function switchPTab(event, name) {
+  document.querySelectorAll('#tools .code-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#tools .code-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('ptab-' + name).classList.add('active');
+}
+
+let bldProvider, bldSigner;
+async function connectWallet() {
+  if (window.ethereum) {
+    try {
+      bldProvider = window.ethereum;
+      const accounts = await bldProvider.request({ method: 'eth_requestAccounts' });
+      document.getElementById('walletAddress').textContent = `Connected: ${accounts[0]}`;
+    } catch (err) {
+      document.getElementById('walletAddress').textContent = 'Status: Connection rejected';
+    }
+  } else if (window.solana && window.solana.isPhantom) {
+    try {
+      const resp = await window.solana.connect();
+      document.getElementById('walletAddress').textContent = `Connected: ${resp.publicKey.toString()}`;
+    } catch (err) {
+      document.getElementById('walletAddress').textContent = 'Status: Connection rejected';
+    }
+  } else {
+    document.getElementById('walletAddress').textContent = 'Status: No wallet found (install Phantom or MetaMask)';
+  }
+}
+
+function drawRightTriangle(canvas, a, b) {
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width, height = canvas.height, padding = 40;
+  ctx.clearRect(0, 0, width, height);
+  const drawWidth = width - padding * 2, drawHeight = height - padding * 2;
+  const scale = Math.min(drawWidth / a, drawHeight / b);
+  const sa = a * scale, sb = b * scale;
+  const x0 = padding, y0 = height - padding;
+  const x1 = padding + sa, y1 = height - padding;
+  const x2 = padding, y2 = height - padding - sb;
+
+  const sq = Math.min(sa, sb) * 0.15;
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(x0, y0 - sq, sq, sq);
+
+  ctx.beginPath();
+  ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2); ctx.closePath();
+  ctx.fillStyle = 'rgba(56,189,248,0.2)'; ctx.fill();
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+
+  const c = Math.sqrt(a ** 2 + b ** 2);
+  ctx.fillStyle = '#f8fafc'; ctx.font = '13px monospace'; ctx.textAlign = 'center';
+  ctx.fillText(`a = ${a}`, x0 + sa / 2, y0 + 22);
+  ctx.textAlign = 'right';
+  ctx.fillText(`b = ${b}`, x0 - 8, y0 - sb / 2);
+  ctx.textAlign = 'left'; ctx.fillStyle = '#ffd23f';
+  ctx.fillText(`c = ${c.toFixed(2)}`, x0 + sa / 2 + 10, y0 - sb / 2);
+}
+
+function calculateHypotenuse() {
+  const a = parseFloat(document.getElementById('sideA').value);
+  const b = parseFloat(document.getElementById('sideB').value);
+  if (a > 0 && b > 0) {
+    const c = Math.sqrt(a ** 2 + b ** 2);
+    document.getElementById('result').textContent = `Result: c = ${c.toFixed(4)}`;
+    drawRightTriangle(document.getElementById('triangleCanvas'), a, b);
+  } else {
+    document.getElementById('result').textContent = 'Result: enter both sides (> 0)';
+  }
+}
+
+function loadTriple(a, b, c) {
+  document.getElementById('sideA').value = a;
+  document.getElementById('sideB').value = b;
+  document.getElementById('result').textContent = `Result: c = ${c.toFixed ? c.toFixed(4) : c}`;
+  drawRightTriangle(document.getElementById('triangleCanvas'), a, b);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const c = document.getElementById('triangleCanvas');
+  if (c) drawRightTriangle(c, 3, 4);
+});
+</script>
+</body>
+</html>
