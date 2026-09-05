@@ -8,4 +8,4 @@ CREATE TABLE pythagoras_records (
 );
 
 INSERT INTO pythagoras_records (wallet_address, side_a, side_b, hypotenuse_c) 
-VALUES ('0x0000000000000000000000000000000000000000', 3, 4, 5);
+-- Add seed data only after a valid Solana public key is available.
