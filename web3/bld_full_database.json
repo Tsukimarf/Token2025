@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "project": "Bit Laner Deth",
+    "symbol": "$BLD",
+    "version": "2.0",
+    "exported_at": "2025-06-07T00:00:00Z",
+    "github": "github.com/Tsukimarf/Token2025",
+    "origin": "Kisaran, North Sumatra, Indonesia"
+  },
+  "token": {
+    "name": "Bit Laner Deth",
+    "symbol": "BLD",
+    "network": "mainnet-beta",
+    "decimals": 9,
+    "totalSupply": 1000000000000,
+    "circulatingSupply": 600000000000,
+    "burnedAtGenesis": 400000000000,
+    "contractAddress": "YOUR_SOLANA_PUBLICKEY_HERE",
+    "mintAuthority": null,
+    "freezeAuthority": null,
+    "standard": "Solana SPL Token-2022",
+    "program": "Token Metadata v3",
+    "version": "2.0",
+    "status": "pre-mainnet",
+    "audit": { "auditor": "OtterSec", "version": "2.0", "score": 94, "date": "June 2025" }
+  },
+  "tokenomics": {
+    "distribution": [
+      { "bucket": "Burned at launch",   "pct": 40, "amount": 400000000000, "locked": false, "vested": false, "notes": "Genesis burn permanent" },
+      { "bucket": "Locked liquidity",   "pct": 30, "amount": 300000000000, "locked": true,  "vested": false, "notes": "Raydium LP cannot be withdrawn" },
+      { "bucket": "Community airdrop",  "pct": 20, "amount": 200000000000, "locked": false, "vested": false, "notes": "NFT rewards + airdrops" },
+      { "bucket": "Dev and team",       "pct": 10, "amount": 100000000000, "locked": false, "vested": true,  "notes": "12-month vesting schedule" }
+    ],
+    "transactionFees": {
+      "total": 10,
+      "breakdown": [
+        { "type": "Holder redistribution",    "pct": 5, "destination": "All BLD holders proportional" },
+        { "type": "Liquidity pool",           "pct": 3, "destination": "Raydium auto-add" },
+        { "type": "Marketing meme warfare",   "pct": 2, "destination": "Community campaigns" }
+      ]
+    }
+  },
+  "nft": {
+    "collection": "BLD Skull Series",
+    "supply": 10000,
+    "standard": "Metaplex NFT v1.1",
+    "candyMachine": "v3",
+    "candyMachineAddress": "YOUR_CANDY_MACHINE_ADDRESS_HERE",
+    "mintPrice": 0.1,
+    "whitelistPrice": 0.08,
+    "royalty": 5,
+    "storage": "Arweave/IPFS",
+    "staking": {
+      "rewardPerNFTPerMonth": 50000,
+      "maxMonthlyEmission": 500000000,
+      "rewardVault": 200000000000
+    },
+    "burnClaim": {
+      "bldPerBurn": 5000000,
+      "maxTotalClaims": 50000000000
+    },
+    "rarity": [
+      { "tier": "Common",    "supply": 5500, "probability": 0.55 },
+      { "tier": "Rare",      "supply": 2800, "probability": 0.28 },
+      { "tier": "Epic",      "supply": 1200, "probability": 0.12 },
+      { "tier": "Legendary", "supply": 500,  "probability": 0.05 }
+    ],
+    "mintPhases": [
+      { "phase": 1, "name": "Whitelist",    "supply": 500,  "priceSol": 0.08, "windowHrs": 48,   "status": "pending" },
+      { "phase": 2, "name": "Public Mint",  "supply": 9000, "priceSol": 0.10, "windowHrs": null, "status": "pending" },
+      { "phase": 3, "name": "Staking Live", "supply": null, "priceSol": null, "windowHrs": null, "status": "pending" },
+      { "phase": 4, "name": "Burn Event 1", "supply": null, "priceSol": null, "windowHrs": 720,  "status": "pending" }
+    ]
+  },
+  "contracts": [
+    { "label": "BLD SPL Token",         "address": "YOUR_SOLANA_PUBLICKEY_HERE",      "network": "mainnet-beta", "status": "pending" },
+    { "label": "NFT Candy Machine v3",  "address": "YOUR_CANDY_MACHINE_ADDRESS_HERE", "network": "mainnet-beta", "status": "pending" },
+    { "label": "Raydium Liquidity Pool","address": null,                               "network": "mainnet-beta", "status": "pending" },
+    { "label": "Treasury Squads v4",    "address": null,                               "network": "mainnet-beta", "status": "pending" }
+  ],
+  "roadmap": [
+    { "phase": 1, "name": "Kebangkitan Tengkorak", "tasks": ["Token launch","Website","Telegram & Twitter","Airdrop 1M BLD"], "status": "pending" },
+    { "phase": 2, "name": "Meme Menyerang",        "tasks": ["DEX listing Raydium","Global meme contest","Meme DAO partnership"], "status": "pending" },
+    { "phase": 3, "name": "Deth to the Moon",      "tasks": ["CMC & CoinGecko listing","Burn event #1","Skull NFTs release","Staking live"], "status": "pending" },
+    { "phase": 4, "name": "DETHCENOMICS",           "tasks": ["DAO voting Realms","Merchandise store","Multi-chain BNB","Second audit"], "status": "pending" }
+  ],
+  "dexListings": [
+    { "exchange": "Raydium",       "chain": "Solana",    "type": "dex",       "status": "pending" },
+    { "exchange": "Jupiter",       "chain": "Solana",    "type": "dex",       "status": "pending" },
+    { "exchange": "Orca",          "chain": "Solana",    "type": "dex",       "status": "pending" },
+    { "exchange": "PancakeSwap",   "chain": "BNB Chain", "type": "dex",       "status": "planned" },
+    { "exchange": "CoinMarketCap", "chain": "CEX",       "type": "cex",       "status": "planned" },
+    { "exchange": "CoinGecko",     "chain": "CEX",       "type": "cex",       "status": "planned" },
+    { "exchange": "DEXTools",      "chain": "Analytics", "type": "analytics", "status": "planned" }
+  ],
+  "security": {
+    "auditScore": 94,
+    "auditor": "OtterSec v2.0",
+    "findings": { "critical": 0, "medium": 2, "low": 3, "info": 1 },
+    "checks": [
+      { "item": "Mint authority disabled",             "status": "pass" },
+      { "item": "Freeze authority revoked",            "status": "pass" },
+      { "item": "Reentrancy protection",               "status": "pass" },
+      { "item": "PDA ownership validated",             "status": "pass" },
+      { "item": "Signer verification",                 "status": "pass" },
+      { "item": "Integer overflow checked_add/sub",    "status": "pass" },
+      { "item": "On-chain verification solana-verify", "status": "pass" },
+      { "item": "Reward vault drain limit",            "status": "mitigated", "fixVersion": "2.1" },
+      { "item": "NFT metadata mutability",             "status": "pending",   "fixVersion": "2.1" }
+    ],
+    "accessControl": [
+      { "role": "Treasury",       "mechanism": "Squads v4 multisig", "threshold": "3-of-5", "timeLock": "48h" },
+      { "role": "Program upgrade","mechanism": "Squads v4 multisig", "threshold": "4-of-5", "timeLock": "72h" },
+      { "role": "Candy Machine",  "mechanism": "Team wallet",         "threshold": "2-of-3", "timeLock": null  }
+    ]
+  },
+  "api": {
+    "baseUrl": "https://api.bld.finance",
+    "auth": "Bearer JWT + wallet signature",
+    "rateLimit": "300 req/min",
+    "endpoints": [
+      { "category": "token",   "method": "GET",  "path": "/v1/token/info" },
+      { "category": "token",   "method": "GET",  "path": "/v1/token/supply" },
+      { "category": "token",   "method": "GET",  "path": "/v1/token/balance/{wallet}" },
+      { "category": "token",   "method": "POST", "path": "/v1/token/transfer" },
+      { "category": "nft",     "method": "GET",  "path": "/v1/nft/collection" },
+      { "category": "nft",     "method": "GET",  "path": "/v1/nft/{mint_address}" },
+      { "category": "nft",     "method": "GET",  "path": "/v1/nft/wallet/{wallet}" },
+      { "category": "nft",     "method": "POST", "path": "/v1/nft/mint" },
+      { "category": "staking", "method": "POST", "path": "/v1/staking/stake" },
+      { "category": "staking", "method": "POST", "path": "/v1/staking/unstake" },
+      { "category": "staking", "method": "GET",  "path": "/v1/staking/pending/{wallet}" },
+      { "category": "staking", "method": "POST", "path": "/v1/staking/claim" },
+      { "category": "burn",    "method": "POST", "path": "/v1/burn/claim" },
+      { "category": "burn",    "method": "GET",  "path": "/v1/burn/history/{wallet}" },
+      { "category": "burn",    "method": "GET",  "path": "/v1/burn/vault" }
+    ]
+  }
+}

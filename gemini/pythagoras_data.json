@@ -1,0 +1,9 @@
+{
+  "theorem": "Pythagorean Theorem",
+  "formula": "a^2 + b^2 = c^2",
+  "triples": [
+    { "id": 1, "a": 3, "b": 4, "c": 5 },
+    { "id": 2, "a": 5, "b": 12, "c": 13 },
+    { "id": 3, "a": 8, "b": 15, "c": 17 }
+  ]
+}

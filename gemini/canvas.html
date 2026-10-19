@@ -1,0 +1,12 @@
+<canvas id="triangleCanvas" width="400" height="400" style="background:#0f172a;"></canvas>
+
+<script>
+  const canvas = document.getElementById("triangleCanvas");
+  
+  // Render a 3-4-5 right triangle
+  RightTriangleRenderer.renderToCanvas(canvas, 3, 4, {
+    strokeColor: "#38bdf8",
+    fillColor: "rgba(56, 189, 248, 0.2)",
+    textColor: "#ffffff"
+  });
+</script>
