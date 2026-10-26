@@ -1,0 +1,1002 @@
+{
+  "meta": {
+    "project": "Bit Laner Deth",
+    "symbol": "BLD",
+    "version": "2.1",
+    "last_updated": "2026-10-26"
+  },
+  "token": {
+    "name": "Bit Laner Deth",
+    "symbol": "BLD",
+    "tagline": "Kalau rugi, senyumin aja",
+    "network": "solana-mainnet",
+    "decimals": 9,
+    "total_supply": 1000000000000,
+    "circulating": 600000000000,
+    "burned": 400000000000,
+    "contract_address": null,
+    "is_deployed": false,
+    "audit_score": 97,
+    "auditor": "OtterSec",
+    "audit_version": "v2.1",
+    "version": "2.1"
+  },
+  "contracts": {
+    "bld_spl_token": {
+      "address": null,
+      "status": "pending",
+      "note": "Deploy via spl-token CLI or Anchor",
+      "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "explorer": null
+    },
+    "nft_candy_machine": {
+      "address": null,
+      "status": "pending",
+      "note": "Metaplex Candy Machine v3",
+      "program": "CndyV3LdqHUfDLmd1X2Bf82vQD3PkYPGM6ZaLmkKBSf",
+      "explorer": null
+    },
+    "staking_program": {
+      "address": null,
+      "status": "pending",
+      "note": "Anchor program — bld_staking",
+      "program": null,
+      "explorer": null
+    },
+    "burn_claim_program": {
+      "address": null,
+      "status": "pending",
+      "note": "Anchor program — bld_burn_claim",
+      "program": null,
+      "explorer": null
+    },
+    "raydium_pool": {
+      "address": null,
+      "status": "pending",
+      "note": "Created after token deploy",
+      "program": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+      "explorer": null
+    },
+    "treasury_multisig": {
+      "address": null,
+      "status": "pending",
+      "note": "Squads v4 — 3-of-5 multisig",
+      "program": "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf",
+      "explorer": null
+    }
+  },
+  "idl": {
+    "bld_token": {
+      "version": "0.1.0",
+      "name": "bld_token",
+      "instructions": [
+        {
+          "name": "initialize",
+          "accounts": [
+            {
+              "name": "mint",
+              "isMut": true,
+              "isSigner": true
+            },
+            {
+              "name": "authority",
+              "isMut": true,
+              "isSigner": true
+            },
+            {
+              "name": "systemProgram",
+              "isMut": false,
+              "isSigner": false
+            }
+          ],
+          "args": [
+            {
+              "name": "totalSupply",
+              "type": "u64"
+            },
+            {
+              "name": "decimals",
+              "type": "u8"
+            }
+          ]
+        },
+        {
+          "name": "mintTo",
+          "accounts": [
+            {
+              "name": "mint",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "destination",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "authority",
+              "isMut": false,
+              "isSigner": true
+            }
+          ],
+          "args": [
+            {
+              "name": "amount",
+              "type": "u64"
+            }
+          ]
+        },
+        {
+          "name": "transfer",
+          "accounts": [
+            {
+              "name": "from",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "to",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "owner",
+              "isMut": false,
+              "isSigner": true
+            }
+          ],
+          "args": [
+            {
+              "name": "amount",
+              "type": "u64"
+            }
+          ]
+        },
+        {
+          "name": "disableMintAuthority",
+          "accounts": [
+            {
+              "name": "mint",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "authority",
+              "isMut": false,
+              "isSigner": true
+            }
+          ],
+          "args": []
+        }
+      ],
+      "events": [
+        {
+          "name": "TokenInitialized",
+          "fields": [
+            {
+              "name": "mint",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "totalSupply",
+              "type": "u64",
+              "index": false
+            },
+            {
+              "name": "decimals",
+              "type": "u8",
+              "index": false
+            }
+          ]
+        },
+        {
+          "name": "Transfer",
+          "fields": [
+            {
+              "name": "from",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "to",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "amount",
+              "type": "u64",
+              "index": false
+            }
+          ]
+        }
+      ],
+      "constants": [
+        {
+          "name": "TOTAL_SUPPLY",
+          "type": "u64",
+          "value": "1000000000000"
+        },
+        {
+          "name": "DECIMALS",
+          "type": "u8",
+          "value": "9"
+        }
+      ]
+    },
+    "bld_staking": {
+      "version": "0.2.0",
+      "name": "bld_staking",
+      "instructions": [
+        {
+          "name": "stake",
+          "accounts": [
+            {
+              "name": "stakeAccount",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "nftMint",
+              "isMut": false,
+              "isSigner": false
+            },
+            {
+              "name": "owner",
+              "isMut": true,
+              "isSigner": true
+            }
+          ],
+          "args": []
+        },
+        {
+          "name": "unstake",
+          "accounts": [
+            {
+              "name": "stakeAccount",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "owner",
+              "isMut": true,
+              "isSigner": true
+            }
+          ],
+          "args": []
+        },
+        {
+          "name": "claimReward",
+          "accounts": [
+            {
+              "name": "stakeAccount",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "rewardVault",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "epochGuard",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "ownerTokenAcc",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "owner",
+              "isMut": false,
+              "isSigner": true
+            }
+          ],
+          "args": []
+        },
+        {
+          "name": "resetEpoch",
+          "accounts": [
+            {
+              "name": "epochGuard",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "clock",
+              "isMut": false,
+              "isSigner": false
+            }
+          ],
+          "args": []
+        },
+        {
+          "name": "pendingReward",
+          "accounts": [
+            {
+              "name": "stakeAccount",
+              "isMut": false,
+              "isSigner": false
+            }
+          ],
+          "args": []
+        }
+      ],
+      "events": [
+        {
+          "name": "Staked",
+          "fields": [
+            {
+              "name": "owner",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "nftMint",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "stakedAt",
+              "type": "i64",
+              "index": false
+            }
+          ]
+        },
+        {
+          "name": "RewardClaimed",
+          "fields": [
+            {
+              "name": "owner",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "amount",
+              "type": "u64",
+              "index": false
+            }
+          ]
+        }
+      ],
+      "errors": [
+        {
+          "code": 6000,
+          "name": "EpochLimitExceeded",
+          "msg": "Vault withdrawal would exceed the per-epoch cap"
+        },
+        {
+          "code": 6001,
+          "name": "EpochNotElapsed",
+          "msg": "Epoch window has not elapsed yet"
+        }
+      ],
+      "constants": [
+        {
+          "name": "REWARD_PER_NFT_PER_MONTH",
+          "type": "u64",
+          "value": "50000000000000"
+        },
+        {
+          "name": "MAX_EPOCH_WITHDRAW",
+          "type": "u64",
+          "value": "500000000000000000"
+        },
+        {
+          "name": "EPOCH_SLOTS",
+          "type": "u64",
+          "value": "432000"
+        }
+      ]
+    },
+    "bld_burn_claim": {
+      "version": "0.1.0",
+      "name": "bld_burn_claim",
+      "instructions": [
+        {
+          "name": "burnAndClaim",
+          "accounts": [
+            {
+              "name": "nftMint",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "nftTokenAccount",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "burnRecord",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "bldVault",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "burnerTokenAcc",
+              "isMut": true,
+              "isSigner": false
+            },
+            {
+              "name": "burner",
+              "isMut": true,
+              "isSigner": true
+            },
+            {
+              "name": "tokenProgram",
+              "isMut": false,
+              "isSigner": false
+            }
+          ],
+          "args": []
+        }
+      ],
+      "events": [
+        {
+          "name": "BurnClaimed",
+          "fields": [
+            {
+              "name": "burner",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "nftMint",
+              "type": "publicKey",
+              "index": true
+            },
+            {
+              "name": "bldAmount",
+              "type": "u64",
+              "index": false
+            }
+          ]
+        }
+      ],
+      "constants": [
+        {
+          "name": "BLD_PER_BURN",
+          "type": "u64",
+          "value": "5000000000000000"
+        }
+      ]
+    }
+  },
+  "abi": {
+    "bld_token": [
+      {
+        "type": "function",
+        "name": "initialize",
+        "inputs": [
+          {
+            "name": "totalSupply",
+            "type": "uint64",
+            "indexed": false
+          },
+          {
+            "name": "decimals",
+            "type": "uint8",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "mintTo",
+        "inputs": [
+          {
+            "name": "amount",
+            "type": "uint64",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "transfer",
+        "inputs": [
+          {
+            "name": "to",
+            "type": "address",
+            "indexed": false
+          },
+          {
+            "name": "amount",
+            "type": "uint64",
+            "indexed": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "disableMintAuthority",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "balanceOf",
+        "inputs": [
+          {
+            "name": "account",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "stateMutability": "view",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "totalSupply",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "stateMutability": "view",
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Transfer",
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "to",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "amount",
+            "type": "uint64",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "",
+        "anonymous": false
+      }
+    ],
+    "bld_staking": [
+      {
+        "type": "function",
+        "name": "stake",
+        "inputs": [
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "unstake",
+        "inputs": [
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "claimReward",
+        "inputs": [
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "resetEpoch",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "function",
+        "name": "pendingReward",
+        "inputs": [
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "stateMutability": "view",
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Staked",
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "stakedAt",
+            "type": "int64",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "",
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "RewardClaimed",
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "amount",
+            "type": "uint64",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "",
+        "anonymous": false
+      }
+    ],
+    "bld_burn_claim": [
+      {
+        "type": "function",
+        "name": "burnAndClaim",
+        "inputs": [
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "BurnClaimed",
+        "inputs": [
+          {
+            "name": "burner",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "nftMint",
+            "type": "address",
+            "indexed": true
+          },
+          {
+            "name": "bldAmount",
+            "type": "uint64",
+            "indexed": false
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "",
+        "anonymous": false
+      }
+    ]
+  },
+  "api": {
+    "base_url": "https://api.bld.finance",
+    "auth": "Bearer JWT",
+    "rate_limit": 300,
+    "endpoints": [
+      {
+        "module": "contracts",
+        "method": "GET",
+        "path": "/v1/contracts",
+        "description": "All contract addresses + deploy status (null until deployed)"
+      },
+      {
+        "module": "contracts",
+        "method": "GET",
+        "path": "/v1/contracts/{key}",
+        "description": "One contract: address, program id, status, explorer URL"
+      },
+      {
+        "module": "security",
+        "method": "GET",
+        "path": "/v1/audit",
+        "description": "Latest audit: OtterSec v2.1, score 97, findings"
+      },
+      {
+        "module": "token",
+        "method": "GET",
+        "path": "/v1/token/info",
+        "description": "Token metadata"
+      },
+      {
+        "module": "token",
+        "method": "GET",
+        "path": "/v1/token/supply",
+        "description": "Supply breakdown"
+      },
+      {
+        "module": "token",
+        "method": "GET",
+        "path": "/v1/token/balance/{wallet}",
+        "description": "Wallet BLD balance"
+      },
+      {
+        "module": "token",
+        "method": "POST",
+        "path": "/v1/token/transfer",
+        "description": "Send BLD — requires signature"
+      },
+      {
+        "module": "nft",
+        "method": "GET",
+        "path": "/v1/nft/collection",
+        "description": "Skull Series metadata"
+      },
+      {
+        "module": "nft",
+        "method": "GET",
+        "path": "/v1/nft/{mint_address}",
+        "description": "Single NFT metadata"
+      },
+      {
+        "module": "nft",
+        "method": "GET",
+        "path": "/v1/nft/wallet/{wallet}",
+        "description": "NFTs by wallet"
+      },
+      {
+        "module": "nft",
+        "method": "POST",
+        "path": "/v1/nft/mint",
+        "description": "Mint skull NFT"
+      },
+      {
+        "module": "staking",
+        "method": "POST",
+        "path": "/v1/staking/stake",
+        "description": "Stake NFT"
+      },
+      {
+        "module": "staking",
+        "method": "POST",
+        "path": "/v1/staking/unstake",
+        "description": "Unstake NFT"
+      },
+      {
+        "module": "staking",
+        "method": "GET",
+        "path": "/v1/staking/pending/{wallet}",
+        "description": "Pending BLD rewards"
+      },
+      {
+        "module": "staking",
+        "method": "POST",
+        "path": "/v1/staking/claim",
+        "description": "Claim rewards"
+      },
+      {
+        "module": "burn",
+        "method": "POST",
+        "path": "/v1/burn/claim",
+        "description": "Burn NFT → 5M BLD"
+      },
+      {
+        "module": "burn",
+        "method": "GET",
+        "path": "/v1/burn/history/{wallet}",
+        "description": "Burn history"
+      },
+      {
+        "module": "burn",
+        "method": "GET",
+        "path": "/v1/burn/vault",
+        "description": "Vault balance"
+      }
+    ]
+  },
+  "security": {
+    "audit": {
+      "auditor": "OtterSec",
+      "version": "v2.1",
+      "score": 97,
+      "findings": {
+        "critical": 0,
+        "medium": 0,
+        "low": 1,
+        "info": 1
+      }
+    },
+    "history": [
+      {
+        "version": "v1.0",
+        "date": "March 2026",
+        "score": 0,
+        "note": "Genesis, internal review only"
+      },
+      {
+        "version": "v1.1",
+        "date": "April 2026",
+        "score": 0,
+        "note": "Freeze authority revoked, signer checks, NFT URI validation"
+      },
+      {
+        "version": "v2.0",
+        "date": "June 2025",
+        "score": 94,
+        "note": "Full OtterSec audit, 2 medium open"
+      },
+      {
+        "version": "v2.1",
+        "date": "October 2026",
+        "score": 97,
+        "note": "Metadata freeze + vault rate limiter, 0 medium"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Mint authority disabled",
+        "status": "pass",
+        "detail": "Revoked post-genesis. No new BLD possible."
+      },
+      {
+        "name": "Freeze authority revoked",
+        "status": "pass",
+        "detail": "Cannot freeze any token account."
+      },
+      {
+        "name": "Reentrancy protection",
+        "status": "pass",
+        "detail": "Anchor account guards prevent cross-program reentrancy."
+      },
+      {
+        "name": "PDA ownership validated",
+        "status": "pass",
+        "detail": "All stake/burn PDAs verify seeds and bump."
+      },
+      {
+        "name": "Signer verification",
+        "status": "pass",
+        "detail": "Every mutating instruction requires explicit signer."
+      },
+      {
+        "name": "Integer overflow guards",
+        "status": "pass",
+        "detail": "checked_add / checked_sub on all arithmetic."
+      },
+      {
+        "name": "On-chain verification",
+        "status": "pass",
+        "detail": "solana-verify confirms deployed bytecode."
+      },
+      {
+        "name": "Vault drain rate limit",
+        "status": "pass",
+        "detail": "EpochGuard: 500M BLD max per 432,000-slot epoch; permissionless reset. (v2.1)"
+      },
+      {
+        "name": "NFT metadata mutability",
+        "status": "pass",
+        "detail": "isMutable: false post-reveal; update authority = SystemProgram. (v2.1)"
+      }
+    ]
+  },
+  "roadmap": [
+    {
+      "phase": 1,
+      "name": "Kebangkitan Tengkorak",
+      "status": "pending",
+      "completed": false,
+      "tasks": [
+        "Token launch & website",
+        "Telegram & Twitter",
+        "First airdrop 1M BLD",
+        "DEX liquidity seed"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Meme Menyerang",
+      "status": "pending",
+      "completed": false,
+      "tasks": [
+        "Raydium/Jupiter/Orca listing",
+        "Global meme contest",
+        "Meme DAO partnership",
+        "NFT whitelist"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Deth to the Moon",
+      "status": "pending",
+      "completed": false,
+      "tasks": [
+        "CMC & CoinGecko listing",
+        "Burn event #1",
+        "Skull Series mint",
+        "Staking live"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "DETHCENOMICS",
+      "status": "pending",
+      "completed": false,
+      "tasks": [
+        "Realms DAO",
+        "Merch store",
+        "Multi-chain BNB",
+        "DAO upgrade authority",
+        "Immunefi bounty"
+      ]
+    }
+  ]
+}
